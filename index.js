@@ -4,6 +4,7 @@ const app = express()
 // req=requests   res: response
 
 // http://localhost:3000/itzamar/789
+
 app.get("/:user/:password", (req,res) => { // :/ es el segmento de valor dinamico
     const {user, password} =req.params //desestructuración
     if(user === 'ana' & password === '123'){
@@ -16,6 +17,7 @@ app.get("/:user/:password", (req,res) => { // :/ es el segmento de valor dinamic
 // http://localhost:3000/login?fullname=Ana%20Lilia%20Cruz%20Roque
 
 // http://localhost:3000/login?user=ana&password=123
+
 app.get('/login', (req, res) => {
     const {user, password} =req.query //desestructuración
 
