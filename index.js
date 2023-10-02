@@ -2,8 +2,7 @@ const express = require("express")
 const app = express()
 
 // req=requests   res: response
-
-// http://localhost:3000/itzamar/789
+app.use(express.json())
 
 app.get("/:user/:password", (req,res) => { // :/ es el segmento de valor dinamico
     const {user, password} =req.params //desestructuración
@@ -18,8 +17,8 @@ app.get("/:user/:password", (req,res) => { // :/ es el segmento de valor dinamic
 
 // http://localhost:3000/login?user=ana&password=123
 
-app.get('/login', (req, res) => {
-    const {user, password} =req.query //desestructuración
+app.post('/login', (req, res) => {
+    const {user, password} =req.body //desestructuración
 
     if(!user || !password) {
         res.status(400).json({msg: 'You need to provide <user> and <password> params'})
@@ -32,6 +31,14 @@ app.get('/login', (req, res) => {
 }
     res.status(404).json({msg: 'Wrong user or password'})
 })
+
+
+app.post('/login', (req, res) => {
+    const body = req.body
+
+    res.json(body)
+})
+
 
 app.post("/", (req,res) => {
     res.json({msg:'Hola POST!'})
